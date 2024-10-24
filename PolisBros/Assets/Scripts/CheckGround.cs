@@ -12,21 +12,31 @@ public class CheckGround : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!(collision.CompareTag("Laser")))
+        {
             isGrounded = true;
-            Debug.Log(isGrounded);
+            Debug.Log(isGrounded);    
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (!(collision.CompareTag("Laser")))
+        {
             isGrounded = true;
-            Debug.Log(isGrounded);
+            Debug.Log(isGrounded);    
+        }
+            
 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!(collision.CompareTag("Laser")))
+        {
             isGrounded = false;
-            Debug.Log(isGrounded);
+            Debug.Log(isGrounded);    
+        }
 
     }
 }

@@ -4,10 +4,22 @@ public class Enemy : MonoBehaviour
 {
     public float detectionRange = 1f; // Rango de detección
     public Transform player; // Referencia al jugador
-
+    public int vidas;
+    
     protected virtual void Update()
     {
         DetectPlayer();
+    }
+
+    protected void bajarVida(){
+        vidas -= 1;
+        verificarVidas();
+    }
+
+    protected void verificarVidas(){
+        if(vidas <= 0){
+            Destroy(gameObject);
+        }
     }
 
     protected void DetectPlayer()
@@ -41,7 +53,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ProjectilePlayer"))
         {
-            Destroy(gameObject);
+            bajarVida();
         }
     }
 }

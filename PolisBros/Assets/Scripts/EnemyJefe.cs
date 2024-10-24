@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class EnemyShooter : Enemy
+public class EnemyJefe : Enemy
 {
     public GameObject projectilePrefab; // Prefab del proyectil
     public Transform firePoint; // Punto desde donde se dispara el proyectil
     public float fireRate = 1f; // Tasa de disparo
     private float nextFireTime = 0f; // Tiempo para el próximo disparo
-
     protected override void Update()
     {
         base.Update();
@@ -38,6 +37,16 @@ public class EnemyShooter : Enemy
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             projectile.tag = "ProjectileEnemy";
             projectile.GetComponent<Projectile>().SetDirection(left); // Envía la dirección al proyectil
+        }
+    }
+        protected void verificarVidas(){
+        // if (vidas<vidas/2)
+        // {
+        //     Laser laserScript = new Laser();
+        //     StartCoroutine(laserScript.SpawnLaserLoop());
+        // }
+        if(vidas <= 0){
+            Destroy(gameObject);
         }
     }
 }

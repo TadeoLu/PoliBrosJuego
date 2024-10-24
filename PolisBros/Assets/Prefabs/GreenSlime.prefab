@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRange: 1.5
   player: {fileID: 0}
+  vidas: 1
   moveSpeed: 0.3
 --- !u!61 &1055467559429813065
 BoxCollider2D:

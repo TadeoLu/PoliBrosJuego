@@ -13,10 +13,20 @@ public class playerMovement : MonoBehaviour
     public bool lado = false; //false mirando derecha, true mirando izquierda  
     public Vector2 spawn;
     private Rigidbody2D rb2D;
+    public int vidas = 3;
 
+    public GameObject laser;
+
+    public bool iframes = false;
+        private Renderer renderer; // Para acceder al componente Renderer del personaje
+    private Color originalColor;
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        // Obtén el Renderer del GameObject
+        renderer = GetComponent<Renderer>();
+        // Guarda el color original
+        originalColor = renderer.material.color;
     }
 
     void FixedUpdate()
@@ -25,6 +35,44 @@ public class playerMovement : MonoBehaviour
         Jump();
         Shoot();
     }
+    protected void bajarVida(){
+        if (!iframes)
+        {
+            vidas -= 1;
+            verificarVidas();
+            iframes=true;    
+            StartCoroutine(ResetIframes());
+        }
+
+        
+    }
+
+    protected void verificarVidas(){
+        if(vidas <= 0){
+	        SceneManager.LoadScene("jefe");        
+        }
+    }
+
+    private IEnumerator ResetIframes()
+    {
+        // Parpadeo durante 1 segundo
+        float elapsedTime = 0f;
+        float duration = 1f;
+
+        while (elapsedTime < duration)
+        {
+            // Alterna entre el color original y un color más oscuro
+            renderer.material.color = Color.Lerp(originalColor, Color.gray, Mathf.PingPong(elapsedTime * 10, 1));
+            elapsedTime += Time.deltaTime;
+            yield return null; // Espera un frame
+        }
+
+        // Restablece el color original
+        renderer.material.color = originalColor;
+        // Reinicia iframes
+        iframes = false;
+    }
+
 
 	private void Move()
 	{
@@ -72,9 +120,40 @@ private void Shoot()
         }
         if (collision.gameObject.CompareTag("ProjectileEnemy") || collision.gameObject.CompareTag("Enemy"))
         {
-	    SceneManager.LoadScene("crearMapa");        
+            if (SceneManager.GetActiveScene().name == "jefe")
+            {
+                bajarVida();
+            }else
+            {
+	            SceneManager.LoadScene("jefe");        
+            }
+        }
+        
+    }
+        private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.CompareTag("ProjectileEnemy") || collision.gameObject.CompareTag("Enemy"))
+        {
+            if (SceneManager.GetActiveScene().name == "jefe")
+            {
+                bajarVida();
+            }else
+            {
+	            SceneManager.LoadScene("jefe");        
+            }        
+        }
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            Laser laserScript = collision.gameObject.GetComponent<Laser>();
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAA " + laserScript.laserActivo);
+            if (laserScript.laserActivo)
+            {
+                bajarVida();
+            } 
         }
     }
+
 
 }
 

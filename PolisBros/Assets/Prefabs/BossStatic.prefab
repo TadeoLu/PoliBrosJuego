@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRange: 1
   player: {fileID: 0}
-  moveSpeed: 2
+  vidas: 1
   projectilePrefab: {fileID: 8915254919478379298, guid: 61369e60fd72ce6d38ea1c2e8b59d2e2, type: 3}
   firePoint: {fileID: 3175719437487602021}
   fireRate: 1

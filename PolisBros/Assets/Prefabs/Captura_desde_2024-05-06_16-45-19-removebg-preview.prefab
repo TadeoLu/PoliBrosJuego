@@ -230,6 +230,8 @@ MonoBehaviour:
   firePoint: {fileID: 8210995551032166664}
   lado: 0
   spawn: {x: 0, y: 0}
+  vidas: 3
+  laser: {fileID: 1961945880902374677, guid: ea1646eba68951eac878dce9ca75d6c3, type: 3}
 --- !u!70 &8210995551916782922
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
