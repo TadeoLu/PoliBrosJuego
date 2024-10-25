@@ -14,14 +14,18 @@ public class playerMovement : MonoBehaviour
     public Vector2 spawn;
     private Rigidbody2D rb2D;
     public int vidas = 3;
-
+    private List<GameObject> instanciasVidas = new List<GameObject>();
     public GameObject laser;
+    public GameObject vidaPrefab;
 
     public bool iframes = false;
         private Renderer renderer; // Para acceder al componente Renderer del personaje
     private Color originalColor;
     void Start()
     {
+        if(SceneManager.GetActiveScene().name == "jefe"){
+            GenerarVidas();
+        }
         rb2D = GetComponent<Rigidbody2D>();
         // Obtén el Renderer del GameObject
         renderer = GetComponent<Renderer>();
@@ -29,6 +33,12 @@ public class playerMovement : MonoBehaviour
         originalColor = renderer.material.color;
     }
 
+    void GenerarVidas(){
+        instanciasVidas.Add(Instantiate(vidaPrefab, new Vector3(-1.365f, 1.15f, 0), Quaternion.identity));
+        instanciasVidas.Add(Instantiate(vidaPrefab, new Vector3(-1.24f, 1.15f, 0), Quaternion.identity));
+        instanciasVidas.Add(Instantiate(vidaPrefab, new Vector3(-1.119f, 1.15f, 0), Quaternion.identity));
+
+    }
     void FixedUpdate()
     {
         Move();
@@ -39,6 +49,7 @@ public class playerMovement : MonoBehaviour
         if (!iframes)
         {
             vidas -= 1;
+            instanciasVidas[vidas].GetComponent<vida>().borrarVida();
             verificarVidas();
             iframes=true;    
             StartCoroutine(ResetIframes());
@@ -125,7 +136,7 @@ private void Shoot()
                 bajarVida();
             }else
             {
-	            SceneManager.LoadScene("jefe");        
+	            SceneManager.LoadScene("crearMapa");        
             }
         }
         
@@ -140,13 +151,12 @@ private void Shoot()
                 bajarVida();
             }else
             {
-	            SceneManager.LoadScene("jefe");        
+	            SceneManager.LoadScene("crearMapa");        
             }        
         }
         if (collision.gameObject.CompareTag("Laser"))
         {
             Laser laserScript = collision.gameObject.GetComponent<Laser>();
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAA " + laserScript.laserActivo);
             if (laserScript.laserActivo)
             {
                 bajarVida();

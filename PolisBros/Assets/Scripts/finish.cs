@@ -21,7 +21,8 @@ public class finish : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("crearMapa");        
+            DataManager.Instance.usuarioId = "696798712375";
+            SceneManager.LoadScene("jefe");        
         	Destroy(gameObject); 
 
         }

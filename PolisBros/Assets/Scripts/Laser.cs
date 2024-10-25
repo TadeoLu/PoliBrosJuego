@@ -51,7 +51,7 @@ public class Laser : MonoBehaviour
         laserRenderer.material.color = alertColor;
         
         // Esperar 9 segundos más (para que en total sean 10 segundos entre apariciones)
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(4f);
 
         Destroy(laserInstance);
     }

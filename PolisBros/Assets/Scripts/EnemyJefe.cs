@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyJefe : Enemy
 {
@@ -6,9 +8,16 @@ public class EnemyJefe : Enemy
     public Transform firePoint; // Punto desde donde se dispara el proyectil
     public float fireRate = 1f; // Tasa de disparo
     private float nextFireTime = 0f; // Tiempo para el próximo disparo
+    public Image barraDeVida;
+    public float vidaMaxima; 
+    public GameObject laser;
+    private Laser laserScript;
+    public bool spawningLaser = false;
     protected override void Update()
     {
+        barraDeVida.fillAmount = vidas / vidaMaxima;
         base.Update();
+
     }
 
     protected override void PerformAction()
@@ -39,14 +48,23 @@ public class EnemyJefe : Enemy
             projectile.GetComponent<Projectile>().SetDirection(left); // Envía la dirección al proyectil
         }
     }
-        protected void verificarVidas(){
-        // if (vidas<vidas/2)
-        // {
-        //     Laser laserScript = new Laser();
-        //     StartCoroutine(laserScript.SpawnLaserLoop());
-        // }
+        protected override void verificarVidas(){
+        Debug.Log("Papi"  + (vidas<=vidaMaxima/2));
+        if (vidas<=vidaMaxima/2 && spawningLaser == false)
+        {
+            spawningLaser = true;
+            laserScript = laser.GetComponent<Laser>();
+            StartCoroutine(SpawnLaserLoop());
+        }
         if(vidas <= 0){
+            
             Destroy(gameObject);
+        }
+    }
+      IEnumerator SpawnLaserLoop()
+    {
+        while(true){
+            yield return StartCoroutine(laserScript.SpawnLaser());
         }
     }
 }

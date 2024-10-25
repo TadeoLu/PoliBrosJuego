@@ -75,7 +75,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0458624, y: -0.98369634}
+  m_Offset: {x: -0.0458624, y: -0.9871508}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -86,7 +86,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23239915, y: 0.024173796}
+  m_Size: {x: 0.23239915, y: 0.021870852}
   m_EdgeRadius: 0
 --- !u!114 &8210995551591649768
 MonoBehaviour:
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 8210995551916782922}
   - component: {fileID: 8210995551916782917}
   m_Layer: 8
-  m_Name: Captura_desde_2024-05-06_16-45-19-removebg-preview
+  m_Name: Gonza
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,6 +232,8 @@ MonoBehaviour:
   spawn: {x: 0, y: 0}
   vidas: 3
   laser: {fileID: 1961945880902374677, guid: ea1646eba68951eac878dce9ca75d6c3, type: 3}
+  vidaPrefab: {fileID: 6604840717819914896, guid: 98e69f3bba5c08b9b80d422e93803348, type: 3}
+  iframes: 0
 --- !u!70 &8210995551916782922
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -245,8 +247,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0030989647, y: 0.028305411}
-  m_Size: {x: 0.11025667, y: 0.12221551}
+  m_Offset: {x: -0.0030989647, y: 0.0299173}
+  m_Size: {x: 0.11025667, y: 0.12382734}
   m_Direction: 0
 --- !u!95 &8210995551916782917
 Animator:

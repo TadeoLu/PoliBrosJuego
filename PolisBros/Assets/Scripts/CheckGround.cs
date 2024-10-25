@@ -15,7 +15,6 @@ public class CheckGround : MonoBehaviour
         if (!(collision.CompareTag("Laser")))
         {
             isGrounded = true;
-            Debug.Log(isGrounded);    
         }
     }
 
@@ -23,8 +22,7 @@ public class CheckGround : MonoBehaviour
     {
         if (!(collision.CompareTag("Laser")))
         {
-            isGrounded = true;
-            Debug.Log(isGrounded);    
+            isGrounded = true;   
         }
             
 
@@ -35,7 +33,6 @@ public class CheckGround : MonoBehaviour
         if (!(collision.CompareTag("Laser")))
         {
             isGrounded = false;
-            Debug.Log(isGrounded);    
         }
 
     }

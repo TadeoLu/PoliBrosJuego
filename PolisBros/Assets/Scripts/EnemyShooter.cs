@@ -20,12 +20,12 @@ public class EnemyShooter : Enemy
         // Calcula el giro
         if (direction.x > 0)
         {
-            Flip(false); // Gira a la derecha
+            Flip(true); // Gira a la derecha
             Shoot(false); // Dispara hacia la derecha
         }
         else
         {
-            Flip(true); // Gira a la izquierda
+            Flip(false); // Gira a la izquierda
             Shoot(true); // Dispara hacia la izquierda
         }
     }

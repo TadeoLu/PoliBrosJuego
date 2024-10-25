@@ -28,8 +28,8 @@ public class JSONReader : MonoBehaviour
     {
         TextAsset jsonFile = Resources.Load<TextAsset>(jsonFileName);
         ApiManager api = new ApiManager();
-        //yield return StartCoroutine(api.GetUsuarios(DataManager.Instance.usuarioId));
-        yield return StartCoroutine(api.GetUsuarios("696798712375"));
+        yield return StartCoroutine(api.GetUsuarios(DataManager.Instance.usuarioId));
+        //yield return StartCoroutine(api.GetUsuarios("799644323705"));
         string mapa = api.mapa;
         Debug.Log("Mapa: " + mapa);
         

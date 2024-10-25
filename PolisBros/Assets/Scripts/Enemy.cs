@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         verificarVidas();
     }
 
-    protected void verificarVidas(){
+    protected virtual void verificarVidas(){
         if(vidas <= 0){
             Destroy(gameObject);
         }

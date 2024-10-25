@@ -46,10 +46,7 @@ public class projectileJefe : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameObject.CompareTag("ProjectilePlayer") && !collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject); // Destruye el proyectil al colisionar con algo
-        }
+
         if (gameObject.CompareTag("ProjectileEnemy"))
         {
             Destroy(gameObject);
@@ -59,9 +56,7 @@ public class projectileJefe : MonoBehaviour
     }
         private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("ProjectilePlayer")){
-        	Destroy(gameObject);
-        }
+
         if(collision.CompareTag("Player")){
         	Destroy(gameObject);
         }
