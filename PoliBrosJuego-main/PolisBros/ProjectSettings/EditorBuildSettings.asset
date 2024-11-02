@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Menus/jugar.unity
+    guid: cae1f0386a8e6535a9eaf67de8b3b005
+  - enabled: 1
+    path: Assets/Scenes/crearMapa.unity
+    guid: e86a18024d1c4ae90bcec92200cda582
+  - enabled: 1
+    path: Assets/Scenes/jefe.unity
+    guid: 613949fc41397c42482d35557088f9a2
+  - enabled: 1
+    path: Assets/Scenes/ruleta.unity
+    guid: bfa5e2995b8b1c346ac7a4fc2c1800bf
+  - enabled: 1
+    path: Assets/Scenes/Menus/ganaste.unity
+    guid: cfaffcf0446ca4672b1553f9804b3612
+  - enabled: 1
+    path: Assets/Scenes/Menus/menu.unity
+    guid: c777462af11ddf4fe9fc6ba997f6bb79
+  - enabled: 1
+    path: Assets/Scenes/historia.unity
+    guid: 7d6c3a4f425ebb198ab4bfb412d887fa
+  - enabled: 1
+    path: Assets/Scenes/Menus/elegirModo.unity
+    guid: 91240ee91c0ebac89acc7710de4401e9
+  - enabled: 1
+    path: Assets/Scenes/manual.unity
+    guid: 48de30de96f0dfdcbb8dfda17b7e467a
+  m_configObjects: {}
