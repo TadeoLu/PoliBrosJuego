@@ -11,6 +11,7 @@ TagManager:
   - ProjectileEnemy
   - Laser
   - jefe
+  - finish
   layers:
   - Default
   - TransparentFX
