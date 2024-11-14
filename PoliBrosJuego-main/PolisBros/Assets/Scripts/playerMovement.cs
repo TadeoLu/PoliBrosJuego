@@ -177,42 +177,7 @@ public class playerMovement : MonoBehaviour
             vidas=0;
             verificarVidas();
         }
-        if(collision.gameObject.CompareTag("finish")){
-            int muertesNube = PlayerPrefs.GetInt("Muertes", 1); // 1 como valor por defecto si no se encuentra
-            Debug.Log(muertesNube);
-            StartCoroutine(callApi(muertesNube));   
-            PlayerPrefs.SetInt("Muertes", 0);
-        }
         
-    }
-
-    private IEnumerator callApi(int muertes)
-    {
-        string apiUrl = "http://localhost:3000/api/mapas/muertes/" + DataManager.Instance.usuarioId;
-        string jsonData = "{\"muertes\": " + muertes + "}";
-        UnityWebRequest request = new UnityWebRequest(apiUrl, "POST");
-
-        // Set the request body to the JSON data
-        byte[] jsonBytes = System.Text.Encoding.UTF8.GetBytes(jsonData);
-        request.uploadHandler = new UploadHandlerRaw(jsonBytes);
-        
-        // Set the content type to "application/json"
-        request.SetRequestHeader("Content-Type", "application/json");
-
-        // Set up the download handler to handle the response
-        request.downloadHandler = new DownloadHandlerBuffer();
-
-        // Send the request and wait for the response
-        yield return request.SendWebRequest();
-        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogError(request.error);
-        }
-        else
-        {
-            string jsonResult = request.downloadHandler.text;
-	        Debug.Log("Response: " + jsonResult);
-        }
     }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -255,6 +220,7 @@ public class playerMovement : MonoBehaviour
 
     public void salir()
     {
+        PlayerPrefs.SetInt("Muertes", 0);
         SceneManager.LoadScene("menu");
     }
 
